@@ -1,6 +1,7 @@
 package io.jmlim.taskagile.domain.model.user;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @EqualsAndHashCode
 @RequiredArgsConstructor
 @ToString
