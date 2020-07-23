@@ -11,9 +11,11 @@ import io.jmlim.taskagile.domain.model.user.User;
 import io.jmlim.taskagile.domain.model.user.events.UserRegisteredEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
