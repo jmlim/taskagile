@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"id", "username", "emailAddress"})
 @RequiredArgsConstructor
 @ToString
 public class User {
