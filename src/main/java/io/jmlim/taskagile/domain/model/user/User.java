@@ -50,4 +50,9 @@ public class User {
         user.createdDate = LocalDateTime.now();
         return user;
     }
+
+    public void updateName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

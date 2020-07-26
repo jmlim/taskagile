@@ -2,8 +2,9 @@ package io.jmlim.taskagile.domain.application;
 
 import io.jmlim.taskagile.domain.application.commands.RegistrationCommand;
 import io.jmlim.taskagile.domain.model.user.RegistrationException;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
     /**
      * Register a new user with username, email address, and password
      *

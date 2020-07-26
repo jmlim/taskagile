@@ -5,11 +5,12 @@ import io.jmlim.taskagile.domain.application.commands.RegistrationCommand;
 import io.jmlim.taskagile.domain.common.event.DomainEventPublisher;
 import io.jmlim.taskagile.domain.common.mail.MailManager;
 import io.jmlim.taskagile.domain.common.mail.MessageVariable;
-import io.jmlim.taskagile.domain.model.user.RegistrationException;
-import io.jmlim.taskagile.domain.model.user.RegistrationManagement;
-import io.jmlim.taskagile.domain.model.user.User;
+import io.jmlim.taskagile.domain.model.user.*;
 import io.jmlim.taskagile.domain.model.user.events.UserRegisteredEvent;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -22,6 +23,24 @@ public class UserServiceImpl implements UserService {
     private final RegistrationManagement registrationManagement;
     private final DomainEventPublisher domainEventPublisher;
     private final MailManager mailManager;
+    private final UserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        if (StringUtils.isEmpty(username)) {
+            throw new UsernameNotFoundException("No user found");
+        }
+        User user;
+        if (username.contains("@")) {
+            user = userRepository.findByEmailAddress(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("No user found by `" + username + "`"));
+        } else {
+            user = userRepository.findByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("No user found by `" + username + "`"));
+        }
+        return new SimpleUser(user);
+    }
 
     /**
      * Register a new user with username, email address, and password

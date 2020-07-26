@@ -9,3 +9,14 @@ spring:
     username: jmlim
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+  freemarker:
+    template-loader-path: classpath:/mail-templates/
+  mail:
+    host: localhost
+    port: 1025
+    properties.mail.smtp.auth: false
+
+logging:
+  level:
+     io.jmlim.taskagile: DEBUG
+     org.springframework.security: DEBUG
