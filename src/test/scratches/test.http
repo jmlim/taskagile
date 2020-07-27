@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/registrations
+Content-Type: application/json
+
+{
+  "username": "이애희",
+  "emailAddress": "dogml307@nate.com",
+  "password": "qkqhdwjdanr"
+}
+
+###

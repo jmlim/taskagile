@@ -1,5 +1,7 @@
 package io.jmlim.taskagile.domain.common.mail;
 
+import java.io.IOException;
+
 public interface MailManager {
 
     /**

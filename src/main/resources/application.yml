@@ -1,3 +1,5 @@
+app.mail-from: noreply@gmail.com
+
 spring:
   jpa:
     hibernate:
@@ -12,11 +14,14 @@ spring:
   freemarker:
     template-loader-path: classpath:/mail-templates/
   mail:
-    host: localhost
-    port: 1025
-    properties.mail.smtp.auth: false
+    host: smtp.gmail.com #localhost
+    port: 587 #1025
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    username: username@mail.com
+    password: password
 
 logging:
   level:
-     io.jmlim.taskagile: DEBUG
-     org.springframework.security: DEBUG
+    io.jmlim.taskagile: DEBUG
+    org.springframework.security: DEBUG
